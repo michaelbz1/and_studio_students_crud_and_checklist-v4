@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="parent_contact">
+        <item>No contact</item>
+        <item>Contact by phone</item>
+        <item>Contact by text</item>
+    </string-array>
+
+</resources>

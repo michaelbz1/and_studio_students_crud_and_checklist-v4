@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Students</string>
+    <string name="app_name1">Student Checklist</string>
+    <string name="add_record">Add Record</string>
+    <string name="view_record">View Checklist</string>
+    <string name="btn_update">Update</string>
+    <string name="btn_delete">Delete</string>
+    <string name="empty_list_text">No records found</string>
+    <string name="enter_studentid">Student Id</string>
+    <string name="enter_name">Student Name</string>
+    <string name="enter_period">Period</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="some_hint">Type here to filter&#8230;</string>
+    <string name="button1">1</string>
+    <string name="button2">2</string>
+    <string name="button3">3</string>
+    <string name="button4">4</string>
+
+    <string name="title_activity_signin">Sign in</string>
+    <string-array
+        name="categories">
+        <item>1</item>
+        <item>2</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    <string name="sign_in">Sign In</string>
+    <string name="pref_display_grid">pref_display_grid</string>
+    <string name="settings">Settings</string>
+    <string name="display_in_grid">Display in grid</string>
+    <string name="display_all">All</string>
+    <string name="choose_a_category">Period</string>
+
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string name="behavior_name">Add Behavior</string>
+    <string name="ModifyStudent">Modify Student</string>
+    <string name="AddStudent">Add Student</string>
+    <string name="behavior_id">Behavior ID</string>
+    <string name="behavior_name1">Behavior Name</string>
+    <string name="behavior_date">Behavior Date</string>
+    <string name="app_label">Behavior List Activity</string>
+</resources>

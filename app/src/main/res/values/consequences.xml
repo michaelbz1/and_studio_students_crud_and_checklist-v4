@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="consequences">
+        <item>Conference with student</item>
+        <item>Moved seat</item>
+        <item>Sent out of room</item>
+        <item>Parent call</item>
+        <item>Parent text</item>
+        <item>Detention</item>
+        <item>Office referral</item>
+    </string-array>
+
+</resources>

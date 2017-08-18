@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:title="@string/display_in_grid"
+        android:summary="Display menu data in a multi-column grid"
+        android:key="@string/pref_display_grid" />
+
+    <Preference
+        android:title="Consequence List"
+        android:summary="Change the list of consequences">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.journaldev.sqlite"
+            android:targetClass="com.journaldev.sqlite.ConsequenceListActivity"
+            />
+    </Preference>
+
+    <Preference
+        android:title="Behaviors List"
+        android:summary="Change the list of behaviors">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.journaldev.sqlite"
+            android:targetClass="com.journaldev.sqlite.BehaviorsListActivity"
+            />
+    </Preference>
+
+    <Preference
+        android:title="Class Periods List"
+        android:summary="Change the list of class periods">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.journaldev.sqlite"
+            android:targetClass="com.journaldev.sqlite.ClassPeriodsListActivity"
+            />
+    </Preference>
+</PreferenceScreen>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.journaldev.sqlite" >
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <!--android:name=".StudentListActivity"   -->
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
+            android:name=".ModifyStudentActivity"
+            android:label="@string/app_name" />
+
+        <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
+            android:name=".AddStudentActivity"
+            android:label="@string/app_name" />
+
+        <activity android:theme="@style/AppTheme"
+            android:name=".StudentCheckListActivity"
+            android:label="@string/app_name1" />
+
+        <activity android:theme="@style/AppTheme"
+            android:name=".ImportMainActivity"
+            android:label="@string/app_name1" />
+
+        <activity android:theme="@style/AppTheme"
+            android:name=".StudentListActivity"
+            android:label="Student Edit" />
+
+        <activity
+            android:name=".DetailActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".SigninActivity"
+            android:label="@string/title_activity_signin"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.journaldev.sqlite.MainActivity" />
+        </activity>
+        <activity android:name=".PrefsActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.journaldev.sqlite.MainActivity" />
+        </activity>
+
+        <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
+            android:name=".ModifyIncidentActivity"
+            />
+
+        <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
+            android:name=".AddIncidentActivity"
+            />
+
+        <activity android:theme="@style/AppTheme"
+            android:name=".IncidentListActivity"
+            android:label="Student Incidents"
+            />
+
+        <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
+            android:name=".ModifyConsequenceActivity"
+            />
+
+        <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
+            android:name=".AddConsequenceActivity"
+            />
+
+        <activity android:theme="@style/AppTheme"
+            android:name=".ConsequenceListActivity"
+            android:label="Consequences"
+            />
+
+        <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
+            android:name=".ModifyBehaviorsActivity"
+            />
+
+        <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
+            android:name=".AddBehaviorsActivity"
+            />
+
+        <activity android:theme="@style/AppTheme"
+            android:name=".BehaviorsListActivity"
+            android:label="Behaviors"
+            />
+
+        <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
+            android:name=".ModifyClassPeriodsActivity"
+            />
+
+        <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
+            android:name=".AddClassPeriodsActivity"
+            />
+
+        <activity android:theme="@style/AppTheme"
+            android:name=".ClassPeriodsListActivity"
+            android:label="Class Periods"
+            />
+
+    </application>
+
+</manifest>
