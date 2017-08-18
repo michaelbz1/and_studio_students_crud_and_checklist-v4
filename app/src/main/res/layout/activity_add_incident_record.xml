@@ -16,6 +16,12 @@
         <requestFocus />
     </EditText>
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Incident Date:" />
+
     <EditText
         android:id="@+id/behaviordate_edittext"
         android:layout_width="match_parent"
@@ -23,6 +29,13 @@
         android:ems="10"
         android:hint="@string/behavior_date"
         android:onClick="setDate"></EditText>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Incident Behavior:" />
+
 
     <Spinner
         android:id="@+id/behaviorname_edittext"
@@ -42,6 +55,13 @@
     </EditText>
 -->
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Incident Consequence:" />
+
+
     <Spinner
         android:id="@+id/spinner_consequence"
         android:layout_width="match_parent"
@@ -49,12 +69,26 @@
          />
     <!--android:entries="@array/consequences"-->
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Incident Contact:" />
+
+
     <Spinner
         android:id="@+id/spinner_parent_contact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/parent_contact"
          />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Incident Comment:" />
+
 
     <EditText
         android:id="@+id/et_comments"

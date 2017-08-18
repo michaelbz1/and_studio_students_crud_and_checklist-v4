@@ -52,12 +52,17 @@ public class MainActivity extends AppCompatActivity {
         DatabaseClassPeriodsHelper db = new DatabaseClassPeriodsHelper(getApplicationContext());
         List<String> periods = db.getAllPeriods();
 
-        //this was the old code to get it from the resources
-        //mCategories = getResources().getStringArray(R.array.categories);
-        List<String> stockList = db.getAllPeriods();
-        String[] stringArray = stockList.toArray(new String[0]);
+        //List<String> stockList = db.getAllPeriods();
 
-        mCategories = stringArray;
+        if(periods!=null){
+            String[] stringArray = periods.toArray(new String[0]);
+            mCategories = stringArray;
+
+        }else
+            //this was the old code to get it from the resources
+            mCategories = getResources().getStringArray(R.array.categories);
+
+
 
         //for(String s : stockArr)
         //    System.out.println(s);

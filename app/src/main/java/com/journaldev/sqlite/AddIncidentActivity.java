@@ -67,7 +67,13 @@ public class AddIncidentActivity extends Activity implements OnClickListener {
         myBehaviorsSpinner=(Spinner) findViewById(R.id.behaviorname_edittext);
         loadBehaviorsSpinnerData();
 
-        String behaviorNameEditText = myBehaviorsSpinner.getSelectedItem().toString();
+        if (behaviorNameEditText != null) {
+            String behaviorNameEditText = myBehaviorsSpinner.getSelectedItem().toString();
+        }
+        else {
+            String behaviorNameEditText = "";
+        }
+        
         //behaviorNameEditText = (EditText) findViewById(R.id.behaviorname_edittext);
 
         //behaviorDateEditText = (EditText) findViewById(R.id.behaviordate_edittext);

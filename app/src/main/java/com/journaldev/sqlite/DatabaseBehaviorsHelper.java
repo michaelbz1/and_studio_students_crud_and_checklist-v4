@@ -1,6 +1,8 @@
 package com.journaldev.sqlite;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -12,6 +14,7 @@ import java.util.List;
 
 public class DatabaseBehaviorsHelper extends SQLiteOpenHelper {
 
+    private final Context fContext;
     // Table Name
     public static final String TABLE_NAME = "BEHAVIORS";
 
@@ -32,12 +35,32 @@ public class DatabaseBehaviorsHelper extends SQLiteOpenHelper {
 
     public DatabaseBehaviorsHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+        fContext = context;
     }
+
+    //@Override
+    //public void onCreate(SQLiteDatabase db) {
+    //    db.execSQL(CREATE_TABLE);
+    //}
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE);
+
+        //Add default record to mytable
+        ContentValues _Values = new ContentValues();
+        //Get string array from resource file
+        Resources res = fContext.getResources();
+        String[] _mytable_Records = res.getStringArray(R.array.behaviors);
+        //Loop trough array and insert records into table
+        int _Length = _mytable_Records .length;
+        for (int i = 0; i < _Length; i++) {
+            _Values.put(CONSEQUENCENAME, _mytable_Records [i]);
+            _Values.put(CONSEQUENCESORT, i+1);
+            db.insert(TABLE_NAME, null, _Values);
+        }
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

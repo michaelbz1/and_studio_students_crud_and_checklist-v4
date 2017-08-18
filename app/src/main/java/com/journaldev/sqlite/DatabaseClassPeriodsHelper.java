@@ -1,6 +1,8 @@
 package com.journaldev.sqlite;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -11,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DatabaseClassPeriodsHelper extends SQLiteOpenHelper {
+
+    private final Context fContext;
 
     // Table Name
     public static final String TABLE_NAME = "PERIODS";
@@ -29,14 +33,37 @@ public class DatabaseClassPeriodsHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE = "create table " + TABLE_NAME + "(" + _ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PERIODSNAME + " TEXT NOT NULL);";
 
+
+
     public DatabaseClassPeriodsHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+        fContext = context;
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE);
+
+        //Add default record to mytable
+        ContentValues _Values = new ContentValues();
+        //Get string array from resource file
+        Resources res = fContext.getResources();
+        String[] _mytable_Records = res.getStringArray(R.array.categories);
+        //Loop trough array and insert records into table
+        int _Length = _mytable_Records .length;
+        for (int i = 0; i < _Length; i++) {
+            _Values.put(PERIODSNAME, _mytable_Records [i]);
+            db.insert(TABLE_NAME, null, _Values);
+        }
     }
+
+
+
+    //@Override
+    //public void onCreate(SQLiteDatabase db) {
+    //    db.execSQL(CREATE_TABLE);
+    //}
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
