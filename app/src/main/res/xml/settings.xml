@@ -12,8 +12,8 @@
         android:summary="Change the list of consequences">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="com.journaldev.sqlite"
-            android:targetClass="com.journaldev.sqlite.ConsequenceListActivity"
+            android:targetPackage="com.mrbzclass.studentincidents"
+            android:targetClass="com.mrbzclass.studentincidents.ConsequenceListActivity"
             />
     </Preference>
 
@@ -22,8 +22,8 @@
         android:summary="Change the list of behaviors">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="com.journaldev.sqlite"
-            android:targetClass="com.journaldev.sqlite.BehaviorsListActivity"
+            android:targetPackage="com.mrbzclass.studentincidents"
+            android:targetClass="com.mrbzclass.studentincidents.BehaviorsListActivity"
             />
     </Preference>
 
@@ -32,8 +32,8 @@
         android:summary="Change the list of class periods">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="com.journaldev.sqlite"
-            android:targetClass="com.journaldev.sqlite.ClassPeriodsListActivity"
+            android:targetPackage="com.mrbzclass.studentincidents"
+            android:targetClass="com.mrbzclass.studentincidents.ClassPeriodsListActivity"
             />
     </Preference>
 </PreferenceScreen>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.journaldev.sqlite" >
+    package="com.mrbzclass.studentincidents" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme" >
         <!--android:name=".StudentListActivity"   -->
         <activity
-            android:name=".MainActivity"
+            android:name="com.mrbzclass.studentincidents.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,96 +24,96 @@
         </activity>
 
         <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
-            android:name=".ModifyStudentActivity"
+            android:name="com.mrbzclass.studentincidents.ModifyStudentActivity"
             android:label="@string/app_name" />
 
         <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
-            android:name=".AddStudentActivity"
+            android:name="com.mrbzclass.studentincidents.AddStudentActivity"
             android:label="@string/app_name" />
 
         <activity android:theme="@style/AppTheme"
-            android:name=".StudentCheckListActivity"
+            android:name="com.mrbzclass.studentincidents.StudentCheckListActivity"
             android:label="@string/app_name1" />
 
         <activity android:theme="@style/AppTheme"
-            android:name=".ImportMainActivity"
+            android:name="com.mrbzclass.studentincidents.ImportMainActivity"
             android:label="@string/app_name1" />
 
         <activity android:theme="@style/AppTheme"
-            android:name=".StudentListActivity"
+            android:name="com.mrbzclass.studentincidents.StudentListActivity"
             android:label="Student Edit" />
 
         <activity
-            android:name=".DetailActivity"
-            android:parentActivityName=".MainActivity">
+            android:name="com.mrbzclass.studentincidents.DetailActivity"
+            android:parentActivityName="com.mrbzclass.studentincidents.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.mrbzclass.studentincidents.MainActivity" />
         </activity>
         <activity
-            android:name=".SigninActivity"
+            android:name="com.mrbzclass.studentincidents.SigninActivity"
             android:label="@string/title_activity_signin"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="com.mrbzclass.studentincidents.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.journaldev.sqlite.MainActivity" />
+                android:value="com.mrbzclass.studentincidents.MainActivity" />
         </activity>
-        <activity android:name=".PrefsActivity"
-            android:parentActivityName=".MainActivity">
+        <activity android:name="com.mrbzclass.studentincidents.PrefsActivity"
+            android:parentActivityName="com.mrbzclass.studentincidents.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.journaldev.sqlite.MainActivity" />
+                android:value="com.mrbzclass.studentincidents.MainActivity" />
         </activity>
 
         <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
-            android:name=".ModifyIncidentActivity"
+            android:name="com.mrbzclass.studentincidents.ModifyIncidentActivity"
             />
 
         <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
-            android:name=".AddIncidentActivity"
+            android:name="com.mrbzclass.studentincidents.AddIncidentActivity"
             />
 
         <activity android:theme="@style/AppTheme"
-            android:name=".IncidentListActivity"
+            android:name="com.mrbzclass.studentincidents.IncidentListActivity"
             android:label="Student Incidents"
             />
 
         <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
-            android:name=".ModifyConsequenceActivity"
+            android:name="com.mrbzclass.studentincidents.ModifyConsequenceActivity"
             />
 
         <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
-            android:name=".AddConsequenceActivity"
+            android:name="com.mrbzclass.studentincidents.AddConsequenceActivity"
             />
 
         <activity android:theme="@style/AppTheme"
-            android:name=".ConsequenceListActivity"
+            android:name="com.mrbzclass.studentincidents.ConsequenceListActivity"
             android:label="Consequences"
             />
 
         <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
-            android:name=".ModifyBehaviorsActivity"
+            android:name="com.mrbzclass.studentincidents.ModifyBehaviorsActivity"
             />
 
         <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
-            android:name=".AddBehaviorsActivity"
+            android:name="com.mrbzclass.studentincidents.AddBehaviorsActivity"
             />
 
         <activity android:theme="@style/AppTheme"
-            android:name=".BehaviorsListActivity"
+            android:name="com.mrbzclass.studentincidents.BehaviorsListActivity"
             android:label="Behaviors"
             />
 
         <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
-            android:name=".ModifyClassPeriodsActivity"
+            android:name="com.mrbzclass.studentincidents.ModifyClassPeriodsActivity"
             />
 
         <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
-            android:name=".AddClassPeriodsActivity"
+            android:name="com.mrbzclass.studentincidents.AddClassPeriodsActivity"
             />
 
         <activity android:theme="@style/AppTheme"
-            android:name=".ClassPeriodsListActivity"
+            android:name="com.mrbzclass.studentincidents.ClassPeriodsListActivity"
             android:label="Class Periods"
             />
 

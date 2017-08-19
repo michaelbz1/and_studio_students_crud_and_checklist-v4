@@ -5,7 +5,7 @@ android {
     buildToolsVersion '25.0.2'
 
     defaultConfig {
-        applicationId "com.journaldev.sqlite"
+        applicationId "com.mrbzclass.studentincidents"
         minSdkVersion 21
         targetSdkVersion 21
         versionCode 1

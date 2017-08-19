@@ -5,6 +5,10 @@
     android:orientation="vertical"
     android:padding="10dp" >
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Student ID:" />
     <EditText
         android:id="@+id/studentid_edittext"
         android:layout_width="match_parent"
@@ -13,6 +17,10 @@
         android:ems="10"
         android:hint="@string/enter_studentid" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Student Name:" />
     <EditText
         android:id="@+id/studentname_edittext"
         android:layout_width="match_parent"
@@ -22,6 +30,10 @@
         >
     </EditText>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Student Period:" />
     <EditText
         android:id="@+id/studentper_edittext"
         android:layout_width="match_parent"
