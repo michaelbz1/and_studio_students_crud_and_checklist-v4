@@ -12,15 +12,12 @@
         android:visibility="gone"
         android:ems="10"
         android:hint="@string/behavior_id" >
-
-        <requestFocus />
     </EditText>
 
     <TextView
-        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Incident Date:" />
+        android:text="Date:" />
 
     <EditText
         android:id="@+id/behaviordate_edittext"
@@ -28,13 +25,15 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/behavior_date"
-        android:onClick="setDate"></EditText>
+        android:onClick="setDate"
+        android:paddingBottom="20dp">
+
+    </EditText>
 
     <TextView
-        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Incident Behavior:" />
+        android:text="Behavior:" />
 
 
     <Spinner
@@ -43,6 +42,7 @@
         android:layout_height="wrap_content"
         android:entries="@array/behaviors"
         android:hint="@string/behavior_name1"
+        android:paddingBottom="20dp"
         />
 <!--
     <EditText
@@ -56,24 +56,23 @@
 -->
 
     <TextView
-        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Incident Consequence:" />
+        android:text="Consequence:" />
 
 
     <Spinner
         android:id="@+id/spinner_consequence"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         />
+        android:paddingBottom="20dp"
+        />
     <!--android:entries="@array/consequences"-->
 
     <TextView
-        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Incident Contact:" />
+        android:text="Contact:" />
 
 
     <Spinner
@@ -81,13 +80,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/parent_contact"
-         />
+        android:paddingBottom="20dp"
+        />
 
     <TextView
-        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Incident Comment:" />
+        android:text="Comment:" />
 
 
     <EditText
@@ -95,6 +94,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Comments"
+        android:paddingBottom="20dp"
         />
 
     <Button

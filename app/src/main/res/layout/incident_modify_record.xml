@@ -21,6 +21,7 @@
         android:ems="10"
         android:onClick="setDate"
         android:hint="Behavior Date"
+        android:paddingBottom="20dp"
         >
     </EditText>
 
@@ -30,6 +31,7 @@
         android:layout_height="wrap_content"
         android:entries="@array/behaviors"
         android:hint="@string/enter_name"
+        android:paddingBottom="20dp"
         />
     <!--
 
@@ -49,6 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/consequences"
+        android:paddingBottom="20dp"
         />
 
     <Spinner
@@ -56,6 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/parent_contact"
+        android:paddingBottom="20dp"
         />
 
     <EditText
@@ -63,6 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Comments"
+        android:paddingBottom="20dp"
         />
 
     <LinearLayout
