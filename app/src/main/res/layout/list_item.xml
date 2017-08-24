@@ -20,6 +20,7 @@
 
     <TextView
         android:id="@+id/itemNameText"
+        style="@android:style/TextAppearance.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -28,8 +29,9 @@
         android:layout_toEndOf="@+id/imageView"
         android:layout_toRightOf="@+id/imageView"
         android:text="A menu item"
-        android:textSize="24sp"
         tools:ignore="HardcodedText" />
 
+    <!--         android:textSize="24sp"
+-->
 
 </RelativeLayout>

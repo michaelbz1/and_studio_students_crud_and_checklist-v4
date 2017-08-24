@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     DataItemAdapter mItemAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +61,9 @@ public class MainActivity extends AppCompatActivity {
             //this was the old code to get it from the resources
             mCategories = getResources().getStringArray(R.array.categories);
 
-
+        //SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit();
+        //e.putString("period_chosen", null);
+        //e.commit();
 
         //for(String s : stockArr)
         //    System.out.println(s);
@@ -79,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 mDrawerLayout.closeDrawer(mDrawerList);
                 //globalVarValue = category;
+
+                SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit();
+                e.putString("period_chosen", category);
+                e.commit();
+
                 displayDataItems(category);
             }
         });
@@ -115,7 +123,37 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         mDataSource.open();
-        //displayDataItems(null);
+
+        String lastPeriod = PreferenceManager.getDefaultSharedPreferences(this).getString("period_chosen", null);
+        Toast.makeText(MainActivity.this, "You chose " + lastPeriod,
+                Toast.LENGTH_SHORT).show();
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean grid = settings.getBoolean(getString(R.string.pref_display_grid), false);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.rvItems);
+        if (grid) {
+            mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        }
+        if (lastPeriod != null) {
+            displayDataItems(lastPeriod);}
+        else
+        {
+            displayDataItems(null);
+        }
+
+        // get last open Activity
+        String lastActivity = PreferenceManager.getDefaultSharedPreferences(this).getString("last_activity", "");
+        //Toast.makeText(MainActivity.this, "You chose " + lastActivity,
+        //        Toast.LENGTH_SHORT).show();
+        if (lastActivity == "Reset") {
+            SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit();
+            e.putString("period_chosen", null);
+            e.commit();
+            displayDataItems(null);
+            //Toast.makeText(MainActivity.this, "it reset" + lastActivity,
+            //        Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
@@ -127,15 +165,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-
+            //This is somewhat confusing.  This is the edit menu
             case R.id.action_students:
                 Intent intent = new Intent(this, StudentListActivity.class);
                 startActivity(intent);
                 return true;
-            //case R.id.action_students:
-            //    Intent intent = new Intent(this, SigninActivity.class);
-            //    startActivityForResult(intent, SIGNIN_REQUEST);
-            //    return true;
+            //This is the menu item next to settings
+            case R.id.view_records:
+                Intent list_intent = new Intent(this, IncidenbystudentActivity.class);
+                startActivity(list_intent);
+                return true;
             case R.id.action_settings:
                 // Show the settings screen
                 Intent settingsIntent = new Intent(this, PrefsActivity.class);
@@ -143,6 +182,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.action_all_items:
                 // display all items
+                SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit();
+                e.putString("period_chosen", null);
+                e.commit();
                 displayDataItems(null);
                 return true;
             case R.id.action_choose_category:

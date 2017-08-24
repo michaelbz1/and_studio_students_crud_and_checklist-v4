@@ -87,11 +87,12 @@ public class databaseIncidentHelper extends SQLiteOpenHelper {
 
         }
         else {
-            mCursor = database.query(true, databaseIncidentHelper.TABLE_NAME, new String[] {databaseIncidentHelper._ID,
-                            databaseIncidentHelper.BEHAVIORID, databaseIncidentHelper.BEHAVIORNAME, databaseIncidentHelper.BEHAVIORDATE,
-                            databaseIncidentHelper.BEHAVIORCONSEQUENCE, databaseIncidentHelper.BEHAVIORPARENTCONTACT, databaseIncidentHelper.BEHAVIORCOMMENTS},
-                    databaseIncidentHelper.BEHAVIORDATE + " like '%" + inputText + "%'", null,
-                    null, null, null, null);
+            mCursor = database.rawQuery("SELECT * FROM incidents WHERE BEHAVIORID = ? ",  new String[] {inputText});
+//            mCursor = database.query(true, databaseIncidentHelper.TABLE_NAME, new String[] {databaseIncidentHelper._ID,
+ //                           databaseIncidentHelper.BEHAVIORID, databaseIncidentHelper.BEHAVIORNAME, databaseIncidentHelper.BEHAVIORDATE,
+//                            databaseIncidentHelper.BEHAVIORCONSEQUENCE, databaseIncidentHelper.BEHAVIORPARENTCONTACT, databaseIncidentHelper.BEHAVIORCOMMENTS},
+//                    databaseIncidentHelper.BEHAVIORDATE + " like '%" + inputText + "%'", null,
+//                    null, null, null, null);
         }
         if (mCursor != null) {
             mCursor.moveToFirst();

@@ -41,7 +41,11 @@
 
         <activity android:theme="@style/AppTheme"
             android:name="com.mrbzclass.studentincidents.StudentListActivity"
-            android:label="Student Edit" />
+            android:label="Student Edit">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.mrbzclass.studentincidents.MainActivity" />
+        </activity>
 
         <activity
             android:name="com.mrbzclass.studentincidents.DetailActivity"
@@ -59,6 +63,7 @@
                 android:value="com.mrbzclass.studentincidents.MainActivity" />
         </activity>
         <activity android:name="com.mrbzclass.studentincidents.PrefsActivity"
+            android:label="Settings"
             android:parentActivityName="com.mrbzclass.studentincidents.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -75,8 +80,11 @@
 
         <activity android:theme="@style/AppTheme"
             android:name="com.mrbzclass.studentincidents.IncidentListActivity"
-            android:label="Student Incidents"
-            />
+            android:label="Student Incidents">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.mrbzclass.studentincidents.MainActivity" />
+        </activity>
 
         <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
             android:name="com.mrbzclass.studentincidents.ModifyConsequenceActivity"
@@ -117,6 +125,10 @@
             android:label="Class Periods"
             />
 
+        <activity android:theme="@style/AppTheme"
+            android:name="com.mrbzclass.studentincidents.IncidenbystudentActivity"
+            android:label="List of behaviors by student"
+            />
     </application>
 
 </manifest>

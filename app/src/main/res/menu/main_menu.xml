@@ -12,6 +12,14 @@
         android:title="@string/sign_in"
         app:showAsAction="ifRoom" />
         -->
+
+    <item
+        android:id="@+id/view_records"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:orderInCategory="100"
+        android:title="@string/view_record"
+        app:showAsAction="always"/>
+
     <item
         android:id="@+id/action_settings"
         android:title="@string/settings"

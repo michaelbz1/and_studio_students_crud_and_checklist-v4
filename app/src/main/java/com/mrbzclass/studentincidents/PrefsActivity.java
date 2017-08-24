@@ -29,6 +29,8 @@ public class PrefsActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+    }
 }
 

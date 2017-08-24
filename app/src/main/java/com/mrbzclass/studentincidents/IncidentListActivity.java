@@ -51,7 +51,7 @@ public class IncidentListActivity extends AppCompatActivity {
         dbManager = new DBIncidentManager(this);
         dbManager.open();
         //Cursor cursor = dbManager.fetch();
-        Cursor cursor = dbManager.fetchCountriesByName(itemId);
+        Cursor cursor = dbManager.fetchIncidentsByName(itemId);
 
 
 //        Toast.makeText(this, "(IncidentListActivity)You selected " + itemId + " " + itemName,

@@ -2,8 +2,10 @@ package com.mrbzclass.studentincidents;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
@@ -125,4 +127,13 @@ public class StudentListActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        e.putString("last_activity", "Reset");
+        e.commit();
+
+        super.onResume();
+    }
 }

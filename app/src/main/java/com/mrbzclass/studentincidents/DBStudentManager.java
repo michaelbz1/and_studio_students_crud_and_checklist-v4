@@ -1,8 +1,5 @@
 package com.mrbzclass.studentincidents;
 
-/**
- * Created by anupamchugh on 19/10/15.
- */
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -51,6 +48,24 @@ public class DBStudentManager {
         }
         return cursor;
     }
+    public Cursor fetchCount() throws SQLException {
+        //Log.w(TAG, inputText);
+        Cursor mCursor = null;
+        //DBIncidentManager.java
+        mCursor = database.rawQuery("select count(*) from students",null);
+//            mCursor = database.query(false, databaseIncidentHelper.TABLE_NAME, new String[] {databaseIncidentHelper._ID,
+//                            databaseIncidentHelper.BEHAVIORID, databaseIncidentHelper.BEHAVIORNAME, databaseIncidentHelper.BEHAVIORDATE,
+//                            databaseIncidentHelper.BEHAVIORCONSEQUENCE, databaseIncidentHelper.BEHAVIORPARENTCONTACT, databaseIncidentHelper.BEHAVIORCOMMENTS},
+//                    databaseIncidentHelper.BEHAVIORID + " like '%" + inputText + "%'", null,
+//                    null, null, null, null);
+
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+
+    }
+
     public Cursor fetchDistictStudentPeriod() {
 
         String[] columns = new String[] { DatabaseStudentHelper._ID, DatabaseStudentHelper.STUDENTID, DatabaseStudentHelper.STUDENTNAME, DatabaseStudentHelper.STUDENTPER };

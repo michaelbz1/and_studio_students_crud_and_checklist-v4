@@ -75,7 +75,7 @@ public class DBIncidentManager {
         database.delete(databaseIncidentHelper.TABLE_NAME, databaseIncidentHelper._ID + "=" + _id, null);
     }
 
-    public Cursor fetchCountriesByName(String inputText) throws SQLException {
+    public Cursor fetchIncidentsByName(String inputText) throws SQLException {
         //Log.w(TAG, inputText);
         Cursor mCursor = null;
         if (inputText == null  ||  inputText.length () == 0)  {
@@ -86,11 +86,14 @@ public class DBIncidentManager {
 
         }
         else {
-            mCursor = database.query(true, databaseIncidentHelper.TABLE_NAME, new String[] {databaseIncidentHelper._ID,
-                            databaseIncidentHelper.BEHAVIORID, databaseIncidentHelper.BEHAVIORNAME, databaseIncidentHelper.BEHAVIORDATE,
-                            databaseIncidentHelper.BEHAVIORCONSEQUENCE, databaseIncidentHelper.BEHAVIORPARENTCONTACT, databaseIncidentHelper.BEHAVIORCOMMENTS},
-                    databaseIncidentHelper.BEHAVIORID + " like '%" + inputText + "%'", null,
-                    null, null, null, null);
+
+            //DBIncidentManager.java
+            mCursor = database.rawQuery("SELECT * FROM incidents WHERE BEHAVIORID = ? ",  new String[] {inputText});
+//            mCursor = database.query(false, databaseIncidentHelper.TABLE_NAME, new String[] {databaseIncidentHelper._ID,
+//                            databaseIncidentHelper.BEHAVIORID, databaseIncidentHelper.BEHAVIORNAME, databaseIncidentHelper.BEHAVIORDATE,
+//                            databaseIncidentHelper.BEHAVIORCONSEQUENCE, databaseIncidentHelper.BEHAVIORPARENTCONTACT, databaseIncidentHelper.BEHAVIORCOMMENTS},
+//                    databaseIncidentHelper.BEHAVIORID + " like '%" + inputText + "%'", null,
+//                    null, null, null, null);
         }
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -98,4 +101,25 @@ public class DBIncidentManager {
         return mCursor;
 
     }
+
+    public Cursor fetchIncidentsCount(String inputText) throws SQLException {
+        //Log.w(TAG, inputText);
+        Cursor mCursor = null;
+            //DBIncidentManager.java
+            mCursor = database.rawQuery("select count(*) from incidents WHERE BEHAVIORID = ? ",  new String[] {inputText});
+//            mCursor = database.query(false, databaseIncidentHelper.TABLE_NAME, new String[] {databaseIncidentHelper._ID,
+//                            databaseIncidentHelper.BEHAVIORID, databaseIncidentHelper.BEHAVIORNAME, databaseIncidentHelper.BEHAVIORDATE,
+//                            databaseIncidentHelper.BEHAVIORCONSEQUENCE, databaseIncidentHelper.BEHAVIORPARENTCONTACT, databaseIncidentHelper.BEHAVIORCOMMENTS},
+//                    databaseIncidentHelper.BEHAVIORID + " like '%" + inputText + "%'", null,
+//                    null, null, null, null);
+
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+
+    }
+
+
+
 }
