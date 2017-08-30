@@ -2,9 +2,13 @@ package com.mrbzclass.studentincidents;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.preference.PreferenceManager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 public class DBIncidentManager {
 
@@ -78,23 +82,33 @@ public class DBIncidentManager {
     public Cursor fetchIncidentsByName(String inputText) throws SQLException {
         //Log.w(TAG, inputText);
         Cursor mCursor = null;
-        if (inputText == null  ||  inputText.length () == 0)  {
-            mCursor = database.query(databaseIncidentHelper.TABLE_NAME, new String[] {databaseIncidentHelper._ID,
-                            databaseIncidentHelper.BEHAVIORID, databaseIncidentHelper.BEHAVIORNAME, databaseIncidentHelper.BEHAVIORDATE,
-                            databaseIncidentHelper.BEHAVIORCONSEQUENCE, databaseIncidentHelper.BEHAVIORPARENTCONTACT, databaseIncidentHelper.BEHAVIORCOMMENTS},
-                    null, null, null, null, null);
 
-        }
-        else {
-
-            //DBIncidentManager.java
-            mCursor = database.rawQuery("SELECT * FROM incidents WHERE BEHAVIORID = ? ",  new String[] {inputText});
+        //DBIncidentManager.java
+        mCursor = database.rawQuery("SELECT * FROM incidents WHERE BEHAVIORID = ? order by BEHAVIORNAME, BEHAVIORDATE, BEHAVIORCONSEQUENCE  ",  new String[] {inputText});
 //            mCursor = database.query(false, databaseIncidentHelper.TABLE_NAME, new String[] {databaseIncidentHelper._ID,
 //                            databaseIncidentHelper.BEHAVIORID, databaseIncidentHelper.BEHAVIORNAME, databaseIncidentHelper.BEHAVIORDATE,
 //                            databaseIncidentHelper.BEHAVIORCONSEQUENCE, databaseIncidentHelper.BEHAVIORPARENTCONTACT, databaseIncidentHelper.BEHAVIORCOMMENTS},
 //                    databaseIncidentHelper.BEHAVIORID + " like '%" + inputText + "%'", null,
 //                    null, null, null, null);
+
+        if (mCursor != null) {
+            mCursor.moveToFirst();
         }
+        return mCursor;
+
+    }
+    public Cursor fetchIncidentsByDate(String inputText) throws SQLException {
+        //Log.w(TAG, inputText);
+        Cursor mCursor = null;
+
+        //DBIncidentManager.java
+        mCursor = database.rawQuery("SELECT * FROM incidents WHERE BEHAVIORID = ? order by BEHAVIORDATE, BEHAVIORNAME, BEHAVIORCONSEQUENCE  ",  new String[] {inputText});
+//            mCursor = database.query(false, databaseIncidentHelper.TABLE_NAME, new String[] {databaseIncidentHelper._ID,
+//                            databaseIncidentHelper.BEHAVIORID, databaseIncidentHelper.BEHAVIORNAME, databaseIncidentHelper.BEHAVIORDATE,
+//                            databaseIncidentHelper.BEHAVIORCONSEQUENCE, databaseIncidentHelper.BEHAVIORPARENTCONTACT, databaseIncidentHelper.BEHAVIORCOMMENTS},
+//                    databaseIncidentHelper.BEHAVIORID + " like '%" + inputText + "%'", null,
+//                    null, null, null, null);
+
         if (mCursor != null) {
             mCursor.moveToFirst();
         }

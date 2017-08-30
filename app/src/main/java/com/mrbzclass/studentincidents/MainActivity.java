@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
         displayDataItems(null);
     }
+
 //Populate the student list from the StudentDataSource.
     private void displayDataItems(String category) {
         listFromDB = mDataSource.getAllItems(category);
@@ -125,8 +126,8 @@ public class MainActivity extends AppCompatActivity {
         mDataSource.open();
 
         String lastPeriod = PreferenceManager.getDefaultSharedPreferences(this).getString("period_chosen", null);
-        Toast.makeText(MainActivity.this, "You chose " + lastPeriod,
-                Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MainActivity.this, "You chose " + lastPeriod,
+        //        Toast.LENGTH_SHORT).show();
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         boolean grid = settings.getBoolean(getString(R.string.pref_display_grid), false);
 
@@ -150,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
             e.putString("period_chosen", null);
             e.commit();
             displayDataItems(null);
+
             //Toast.makeText(MainActivity.this, "it reset" + lastActivity,
             //        Toast.LENGTH_SHORT).show();
         }
@@ -211,5 +213,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
+    @Override
+    public void onBackPressed() {
+    }
 }

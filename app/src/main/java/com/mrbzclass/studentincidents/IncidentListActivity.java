@@ -1,8 +1,10 @@
 package com.mrbzclass.studentincidents;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -51,7 +53,17 @@ public class IncidentListActivity extends AppCompatActivity {
         dbManager = new DBIncidentManager(this);
         dbManager.open();
         //Cursor cursor = dbManager.fetch();
-        Cursor cursor = dbManager.fetchIncidentsByName(itemId);
+
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean pref_sort = settings.getBoolean(getString(R.string.pref_sort_by_date), false);
+
+        Cursor cursor;
+        if (pref_sort) {
+            cursor = dbManager.fetchIncidentsByDate(itemId);
+        }else
+            cursor = dbManager.fetchIncidentsByName(itemId);
+
+        //Cursor cursor = dbManager.fetchIncidentsByName(itemId);
 
 
 //        Toast.makeText(this, "(IncidentListActivity)You selected " + itemId + " " + itemName,

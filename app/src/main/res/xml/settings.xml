@@ -7,6 +7,12 @@
         android:summary="Display menu data in a multi-column grid"
         android:key="@string/pref_display_grid" />
 
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:title="Sort Incidents"
+        android:summary="Sort incidents by date instead of behavior"
+        android:key="@string/pref_sort_by_date" />
+
     <Preference
         android:title="Consequence List"
         android:summary="Change the list of consequences">
