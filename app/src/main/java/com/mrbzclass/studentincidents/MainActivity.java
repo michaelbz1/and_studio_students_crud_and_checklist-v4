@@ -174,7 +174,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             //This is the menu item next to settings
             case R.id.view_records:
-                Intent list_intent = new Intent(this, IncidenbystudentActivity.class);
+                //Intent list_intent = new Intent(this, IncidenbystudentActivity.class);
+                Intent list_intent = new Intent(this, IncidentsbystudentExport.class);
                 startActivity(list_intent);
                 return true;
             case R.id.action_settings:

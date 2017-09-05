@@ -4,29 +4,44 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.opencsv.CSVWriter;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
 
 public class StudentListActivity extends ActionBarActivity {
 
     private DBStudentManager dbManager;
 
+
     private ListView listView;
 
     private SimpleCursorAdapter adapter;
 
-    final String[] from = new String[] { DatabaseStudentHelper._ID, DatabaseStudentHelper.STUDENTID, DatabaseStudentHelper.STUDENTNAME, DatabaseStudentHelper.STUDENTPER };
+    final String[] from = new String[]{DatabaseStudentHelper._ID, DatabaseStudentHelper.STUDENTID, DatabaseStudentHelper.STUDENTNAME, DatabaseStudentHelper.STUDENTPER};
 
-    final int[] to = new int[] { R.id.id, R.id.studentid, R.id.studentname, R.id.studentper };
+    final int[] to = new int[]{R.id.id, R.id.studentid, R.id.studentname, R.id.studentper};
 
     @Override
     public void onStart() {
@@ -98,14 +113,10 @@ public class StudentListActivity extends ActionBarActivity {
             Intent add_mem = new Intent(this, AddStudentActivity.class);
             startActivity(add_mem);
 
-        }/*
-        //THIS IS THE OTHER ICON ON THE TOP.  SORT OF A SETTINGS LOOKING THING
-        if (id == R.id.view_record) {
-
-            Intent view_mem = new Intent(this, StudentCheckListActivity.class);
-            startActivity(view_mem);
         }
-*/
+
+
+
         //THIS IS THE OTHER ICON ON THE TOP.  SORT OF A SETTINGS LOOKING THING
         if (id == R.id.another_record) {
 
@@ -135,5 +146,66 @@ public class StudentListActivity extends ActionBarActivity {
         e.commit();
 
         super.onResume();
+    }
+
+    private void DBtoCSV(){
+        final String TAG = "IncidentDbAdapter";
+        databaseIncidentHelper dbHelper;
+
+        File dbFile=getDatabasePath("IncidentsDB.DB");
+        databaseIncidentHelper dbhelper = new databaseIncidentHelper(getApplicationContext());
+        File exportDir = new File(Environment.getExternalStorageDirectory(), "");
+        if (!exportDir.exists())
+        {
+            exportDir.mkdirs();
+        }
+
+        File file = new File(exportDir, "csvname.db");
+        try
+        {
+            file.createNewFile();
+            CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
+            SQLiteDatabase db = dbhelper.getReadableDatabase();
+            Cursor curCSV = db.rawQuery("SELECT * FROM INCIDENTS",null);
+            csvWrite.writeNext(curCSV.getColumnNames());
+            while(curCSV.moveToNext())
+            {
+                //Which column you want to exprort
+                String arrStr[] ={curCSV.getString(0),curCSV.getString(1), curCSV.getString(2), curCSV.getString(3), curCSV.getString(4), curCSV.getString(5), curCSV.getString(6)};
+                csvWrite.writeNext(arrStr);
+            }
+            csvWrite.close();
+            curCSV.close();
+        }
+        catch(Exception sqlEx)
+        {
+            Log.e("MainActivity", sqlEx.getMessage(), sqlEx);
+        }
+
+
+    }
+
+    private void exportDB() {
+
+        final String SAMPLE_DB_NAME = "IncidentsDB.DB";
+        final String SAMPLE_TABLE_NAME = "INCIDENTS";
+        File sd = Environment.getExternalStorageDirectory();
+        File data = Environment.getDataDirectory();
+        FileChannel source = null;
+        FileChannel destination = null;
+        String currentDBPath = "/data/" + "com.mrbzclass.studentincidents" + "/databases/" + SAMPLE_DB_NAME;
+        String backupDBPath = SAMPLE_DB_NAME;
+        File currentDB = new File(data, currentDBPath);
+        File backupDB = new File(sd, backupDBPath);
+        try {
+            source = new FileInputStream(currentDB).getChannel();
+            destination = new FileOutputStream(backupDB).getChannel();
+            destination.transferFrom(source, 0, source.size());
+            source.close();
+            destination.close();
+            Toast.makeText(this, "DB Exported!", Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

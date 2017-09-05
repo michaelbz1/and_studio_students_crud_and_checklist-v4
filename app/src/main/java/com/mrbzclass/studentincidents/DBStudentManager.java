@@ -89,7 +89,7 @@ public class DBStudentManager {
     }
 
     public Cursor fetchCountriesByName(String inputText) throws SQLException {
-        Log.w(TAG, inputText);
+        //Log.w(TAG, inputText);
         Cursor mCursor = null;
         if (inputText == null  ||  inputText.length () == 0)  {
             mCursor = database.query(DatabaseStudentHelper.TABLE_NAME, new String[] {DatabaseStudentHelper._ID,
@@ -107,6 +107,28 @@ public class DBStudentManager {
             mCursor.moveToFirst();
         }
         return mCursor;
+    }
+
+    public Cursor fetchCountriesByNameCount(String inputText) throws SQLException {
+        //Log.w(TAG, inputText);
+        Cursor mCursor = null;
+        //DBIncidentManager.java
+        if (inputText == null  ||  inputText.length () == 0)  {
+            mCursor = database.rawQuery("select count(*) from students", null);
+        }
+        else {
+            mCursor = database.rawQuery("select count(*) from students where StudentPeriod like " + "'%" + inputText + "%'" + ";", null);
+//            mCursor = database.query(false, databaseIncidentHelper.TABLE_NAME, new String[] {databaseIncidentHelper._ID,
+//                            databaseIncidentHelper.BEHAVIORID, databaseIncidentHelper.BEHAVIORNAME, databaseIncidentHelper.BEHAVIORDATE,
+//                            databaseIncidentHelper.BEHAVIORCONSEQUENCE, databaseIncidentHelper.BEHAVIORPARENTCONTACT, databaseIncidentHelper.BEHAVIORCOMMENTS},
+//                    databaseIncidentHelper.BEHAVIORID + " like '%" + inputText + "%'", null,
+//                    null, null, null, null);
+        }
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
 
     }
+
 }
